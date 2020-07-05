@@ -7,7 +7,7 @@ class Database {
   if (!$param) {
    return "Harus ada param";
   }
-  $data = file_get_contents('json/data.json');
+  $data = file_get_contents('json/data.json', 1);
 
   $result = json_encode($data);
   $findData = $result->$param;
@@ -28,14 +28,16 @@ class Database {
   return "Masukan valuenya.";
  }
 
- $file = file_get_contents('json/data.json');
+ $file = file_get_contents('json/data.json', 1);
  $result = json_encode($file);
 
  $findData = $result->$key;
  if (!$findData) {
    return "Data tidak ditemukan.";
  } else {
-   $ubah = $findData
+   $ubah = $findData = $value;
+   $resChange = file_get_contents('json/data.json', 1);
+   return $resChange;
   }
  }
 }
